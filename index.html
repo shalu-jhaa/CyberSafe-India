@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSafe India - Internet Safety Awareness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .phishing-example {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+        .phishing-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .phishing-example:hover .phishing-overlay {
+            opacity: 1;
+        }
+        .password-meter {
+            height: 5px;
+            width: 0%;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-shield-alt text-3xl"></i>
+                    <h1 class="text-2xl font-bold">CyberSafe India</h1>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-blue-200 transition">Home</a>
+                    <a href="#threats" class="hover:text-blue-200 transition">Threats</a>
+                    <a href="#protection" class="hover:text-blue-200 transition">Protection</a>
+                    <a href="#resources" class="hover:text-blue-200 transition">Resources</a>
+                    <a href="#quiz" class="hover:text-blue-200 transition">Quiz</a>
+                </nav>
+                <button class="md:hidden text-2xl" id="mobile-menu-button">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-blue-900" id="mobile-menu">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="py-2 hover:text-blue-200 transition">Home</a>
+                <a href="#threats" class="py-2 hover:text-blue-200 transition">Threats</a>
+                <a href="#protection" class="py-2 hover:text-blue-200 transition">Protection</a>
+                <a href="#resources" class="py-2 hover:text-blue-200 transition">Resources</a>
+                <a href="#quiz" class="py-2 hover:text-blue-200 transition">Quiz</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Stay Safe in the Digital India</h1>
+                <p class="text-xl mb-8">Learn how to protect yourself from online threats, scams, and frauds with our comprehensive cybersecurity awareness resources.</p>
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                    <a href="#threats" class="bg-white text-blue-800 font-bold py-3 px-6 rounded-lg hover:bg-blue-100 transition text-center">Learn About Threats</a>
+                    <a href="#quiz" class="border-2 border-white text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition text-center">Test Your Knowledge</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://illustrations.popsy.co/amber/digital-security.svg" alt="Cybersecurity Illustration" class="w-full max-w-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-white py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Cybersecurity in India: By the Numbers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-blue-50 p-6 rounded-lg text-center shadow-sm">
+                    <div class="text-5xl font-bold text-blue-600 mb-3">78%</div>
+                    <p class="text-gray-700">of Indians have experienced cyber fraud attempts</p>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-lg text-center shadow-sm">
+                    <div class="text-5xl font-bold text-blue-600 mb-3">₹188Cr</div>
+                    <p class="text-gray-700">lost to cybercrime in India in 2022 alone</p>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-lg text-center shadow-sm">
+                    <div class="text-5xl font-bold text-blue-600 mb-3">65%</div>
+                    <p class="text-gray-700">of users reuse passwords across multiple sites</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Threats Section -->
+    <section id="threats" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Common Cyber Threats</h2>
+            <p class="text-xl text-center text-gray-600 mb-12 max-w-3xl mx-auto">Understanding these threats is the first step to protecting yourself online</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Phishing Card -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-fish text-red-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Phishing Attacks</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Fraudulent attempts to obtain sensitive information by disguising as a trustworthy entity.</p>
+                        <button class="text-blue-600 font-semibold hover:text-blue-800 transition" onclick="showExample('phishing')">See Example →</button>
+                    </div>
+                </div>
+                
+                <!-- Online Scams Card -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-money-bill-wave text-yellow-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Online Scams</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Deceptive schemes to trick victims into sending money or revealing financial information.</p>
+                        <button class="text-blue-600 font-semibold hover:text-blue-800 transition" onclick="showExample('scam')">See Example →</button>
+                    </div>
+                </div>
+                
+                <!-- Malware Card -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-bug text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Malware</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Malicious software designed to damage or gain unauthorized access to computer systems.</p>
+                        <button class="text-blue-600 font-semibold hover:text-blue-800 transition" onclick="showExample('malware')">See Example →</button>
+                    </div>
+                </div>
+                
+                <!-- Identity Theft Card -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-id-card text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Identity Theft</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">When someone steals your personal information to commit fraud or other crimes.</p>
+                        <button class="text-blue-600 font-semibold hover:text-blue-800 transition" onclick="showExample('identity')">See Example →</button>
+                    </div>
+                </div>
+                
+                <!-- Social Engineering Card -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-pink-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-users text-pink-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Social Engineering</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Psychological manipulation to trick people into giving up confidential information.</p>
+                        <button class="text-blue-600 font-semibold hover:text-blue-800 transition" onclick="showExample('social')">See Example →</button>
+                    </div>
+                </div>
+                
+                <!-- Public Wi-Fi Risks Card -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md card-hover transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-wifi text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Public Wi-Fi Risks</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Unsecured networks can expose your data to hackers and eavesdroppers.</p>
+                        <button class="text-blue-600 font-semibold hover:text-blue-800 transition" onclick="showExample('wifi')">See Example →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Modal -->
+    <div id="exampleModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold" id="exampleTitle">Phishing Example</h3>
+                    <button onclick="hideExample()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                </div>
+                <div id="exampleContent">
+                    <!-- Content will be loaded here -->
+                </div>
+                <div class="mt-6">
+                    <button onclick="hideExample()" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-700 transition">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Protection Section -->
+    <section id="protection" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Protection Strategies</h2>
+            <p class="text-xl text-center text-gray-600 mb-12 max-w-3xl mx-auto">Essential practices to keep your digital life secure</p>
+            
+            <div class="flex flex-col md:flex-row mb-8 border-b border-gray-200">
+                <button class="tab-button active py-4 px-6 font-medium text-blue-600 border-b-2 border-blue-600" onclick="openTab(event, 'passwords')">Password Security</button>
+                <button class="tab-button py-4 px-6 font-medium text-gray-500 hover:text-gray-700" onclick="openTab(event, 'privacy')">Privacy Settings</button>
+                <button class="tab-button py-4 px-6 font-medium text-gray-500 hover:text-gray-700" onclick="openTab(event, 'devices')">Device Security</button>
+                <button class="tab-button py-4 px-6 font-medium text-gray-500 hover:text-gray-700" onclick="openTab(event, 'financial')">Financial Safety</button>
+            </div>
+            
+            <div id="passwords" class="tab-content active">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Create Strong Passwords</h3>
+                        <p class="text-gray-600 mb-6">Weak passwords are the easiest way for hackers to access your accounts. Follow these guidelines:</p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Use at least 12 characters with a mix of letters, numbers, and symbols</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Avoid common words, phrases, or personal information</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Use a unique password for each account</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Consider using a passphrase (e.g., "CorrectHorseBatteryStaple")</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold mb-2">Test Your Password Strength</h4>
+                            <input type="password" id="passwordInput" class="w-full p-3 border border-gray-300 rounded-lg mb-2" placeholder="Type a password to test">
+                            <div class="flex items-center mb-2">
+                                <div id="passwordMeter" class="password-meter rounded-full mr-2"></div>
+                                <span id="passwordStrength" class="text-sm font-medium">Weak</span>
+                            </div>
+                            <p id="passwordFeedback" class="text-sm text-gray-500"></p>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold mb-2 flex items-center">
+                                <i class="fas fa-key mr-2 text-blue-600"></i>
+                                Password Manager Recommendation
+                            </h4>
+                            <p class="text-gray-600 mb-3">Consider using a password manager to securely store and generate strong passwords:</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <a href="#" class="bg-white p-3 rounded-lg flex items-center hover:shadow transition">
+                                    <img src="https://logo.clearbit.com/bitwarden.com" alt="Bitwarden" class="h-6 mr-2">
+                                    Bitwarden
+                                </a>
+                                <a href="#" class="bg-white p-3 rounded-lg flex items-center hover:shadow transition">
+                                    <img src="https://logo.clearbit.com/1password.com" alt="1Password" class="h-6 mr-2">
+                                    1Password
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="https://illustrations.popsy.co/amber/security.svg" alt="Password Security" class="w-full max-w-md">
+                    </div>
+                </div>
+            </div>
+            
+            <div id="privacy" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Manage Your Privacy</h3>
+                        <p class="text-gray-600 mb-6">Take control of what information you share online and who can see it:</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold mb-3">Social Media Privacy Checklist</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <input type="checkbox" id="privacy1" class="mt-1 mr-2">
+                                    <label for="privacy1">Set profile to private/friends-only</label>
+                                </div>
+                                <div class="flex items-start">
+                                    <input type="checkbox" id="privacy2" class="mt-1 mr-2">
+                                    <label for="privacy2">Review tagged photos before they appear</label>
+                                </div>
+                                <div class="flex items-start">
+                                    <input type="checkbox" id="privacy3" class="mt-1 mr-2">
+                                    <label for="privacy3">Limit past posts visibility</label>
+                                </div>
+                                <div class="flex items-start">
+                                    <input type="checkbox" id="privacy4" class="mt-1 mr-2">
+                                    <label for="privacy4">Disable location sharing</label>
+                                </div>
+                                <div class="flex items-start">
+                                    <input type="checkbox" id="privacy5" class="mt-1 mr-2">
+                                    <label for="privacy5">Review app permissions regularly</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold mb-2">Two-Factor Authentication (2FA)</h4>
+                            <p class="text-gray-600 mb-3">Add an extra layer of security to your accounts:</p>
+                            <div class="grid grid-cols-3 gap-3">
+                                <div class="bg-white p-3 rounded-lg text-center hover:shadow transition">
+                                    <i class="fas fa-mobile-alt text-2xl mb-2 text-blue-600"></i>
+                                    <p class="text-sm">SMS Codes</p>
+                                </div>
+                                <div class="bg-white p-3 rounded-lg text-center hover:shadow transition">
+                                    <i class="fas fa-apple-alt text-2xl mb-2 text-blue-600"></i>
+                                    <p class="text-sm">Authenticator App</p>
+                                </div>
+                                <div class="bg-white p-3 rounded-lg text-center hover:shadow transition">
+                                    <i class="fas fa-fingerprint text-2xl mb-2 text-blue-600"></i>
+                                    <p class="text-sm">Biometrics</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="https://illustrations.popsy.co/amber/privacy.svg" alt="Privacy Settings" class="w-full max-w-md">
+                    </div>
+                </div>
+            </div>
+            
+            <div id="devices" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Secure Your Devices</h3>
+                        <p class="text-gray-600 mb-6">Protect all your devices from malware and unauthorized access:</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-lock text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Keep Software Updated</h4>
+                                    <p class="text-gray-600">Regularly update your operating system and apps to patch security vulnerabilities.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-shield-virus text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Use Antivirus Software</h4>
+                                    <p class="text-gray-600">Install reputable antivirus software and keep it updated for real-time protection.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-wifi text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Secure Your Network</h4>
+                                    <p class="text-gray-600">Use WPA3 encryption for your Wi-Fi and change default router passwords.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-cloud text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Backup Your Data</h4>
+                                    <p class="text-gray-600">Regularly backup important files to an external drive or cloud storage.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="https://illustrations.popsy.co/amber/security-system.svg" alt="Device Security" class="w-full max-w-md">
+                    </div>
+                </div>
+            </div>
+            
+            <div id="financial" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Financial Safety Online</h3>
+                        <p class="text-gray-600 mb-6">Protect your money and financial information from digital threats:</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-bold mb-3">Banking Safety Tips</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Never share OTPs, PINs, or passwords with anyone</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Verify website URLs before entering login details</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Use official banking apps instead of mobile browsers</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Enable transaction alerts for all account activity</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span>Check statements regularly for unauthorized transactions</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-exclamation-triangle text-yellow-500 text-xl"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-bold text-yellow-800">UPI Payment Scams</h4>
+                                    <p class="text-yellow-700 mt-1">Beware of fake customer care numbers, QR code scams, and requests for screen sharing. Never share your UPI PIN with anyone.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="https://illustrations.popsy.co/amber/online-payments.svg" alt="Financial Safety" class="w-full max-w-md">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Resources & Tools</h2>
+            <p class="text-xl text-center text-gray-600 mb-12 max-w-3xl mx-auto">Helpful resources to enhance your cybersecurity knowledge</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Government Initiatives -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-landmark text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Government Initiatives</h3>
+                        </div>
+                        <ul class="space-y-3">
+                            <li>
+                                <a href="https://www.cert-in.org.in/" target="_blank" class="text-blue-600 hover:text-blue-800 transition flex items-center">
+                                    <i class="fas fa-external-link-alt mr-2 text-sm"></i>
+                                    Indian Computer Emergency Response Team (CERT-In)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.cybercrime.gov.in/" target="_blank" class="text-blue-600 hover:text-blue-800 transition flex items-center">
+                                    <i class="fas fa-external-link-alt mr-2 text-sm"></i>
+                                    National Cyber Crime Reporting Portal
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.meity.gov.in/" target="_blank" class="text-blue-600 hover:text-blue-800 transition flex items-center">
+                                    <i class="fas fa-external-link-alt mr-2 text-sm"></i>
+                                    Ministry of Electronics & IT
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Educational Resources -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-graduation-cap text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Educational Resources</h3>
+                        </div>
+                        <ul class="space-y-3">
+                            <li>
+                                <a href="https://www.cyberaware.gov.in/" target="_blank" class="text-blue-600 hover:text-blue-800 transition flex items-center">
+                                    <i class="fas fa-external-link-alt mr-2 text-sm"></i>
+                                    Cyber Awareness Program (Govt. of India)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.mygov.in/group-issue/stay-safe-cyber-space/" target="_blank" class="text-blue-600 hover:text-blue-800 transition flex items-center">
+                                    <i class="fas fa-external-link-alt mr-2 text-sm"></i>
+                                    MyGov Cyber Safety Campaign
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.ncsc.gov.uk/" target="_blank" class="text-blue-600 hover:text-blue-800 transition flex items-center">
+                                    <i class="fas fa-external-link-alt mr-2 text-sm"></i>
+                                    UK National Cyber Security Centre (NCSC)
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Security Tools -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-tools text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Security Tools</h3>
+                        </div>
+                        <ul class="space-y-3">
+                            <li>
+                                <a href="https://haveibeenpwned.com/" target="_blank" class="text-blue-600 hover:text-blue-800 transition flex items-center">
+                                    <i class="fas fa-external-link-alt mr-2 text-sm"></i>
+                                    Have I Been Pwned? (Check data breaches)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.virustotal.com/" target="_blank" class="text-blue-600 hover:text-blue-800 transition flex items-center">
+                                    <i class="fas fa-external-link-alt mr-2 text-sm"></i>
+                                    VirusTotal (File/URL scanner)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.eff.org/https-everywhere" target="_blank" class="text-blue-600 hover:text-blue-800 transition flex items-center">
+                                    <i class="fas fa-external-link-alt mr-2 text-sm"></i>
+                                    HTTPS Everywhere (Browser extension)
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-white rounded-lg overflow-hidden shadow-md">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-headset mr-3 text-blue-600"></i>
+                        Need Immediate Help?
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold mb-2">Cyber Crime Helpline</h4>
+                            <p class="text-gray-600 mb-2">Report cyber crimes and get assistance:</p>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone-alt mr-2 text-blue-600"></i>
+                                <span class="font-bold">155260 (Toll-free)</span>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold mb-2">Cyber Safety Workshops</h4>
+                            <p class="text-gray-600 mb-2">Request a workshop for your community or organization:</p>
+                            <button class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition text-sm">Contact Us</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Test Your Knowledge</h2>
+            <p class="text-xl text-center text-gray-600 mb-12 max-w-3xl mx-auto">Take this short quiz to assess your cybersecurity awareness</p>
+            
+            <div class="max-w-2xl mx-auto bg-gray-50 rounded-lg shadow-sm p-6">
+                <div id="quizContainer">
+                    <div id="quizIntro">
+                        <h3 class="text-2xl font-bold mb-4">Cybersecurity Quiz</h3>
+                        <p class="text-gray-600 mb-6">This 5-question quiz will test your knowledge of common online threats and safety practices. There are no trick questions, just straightforward cybersecurity awareness.</p>
+                        <button onclick="startQuiz()" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition">Start Quiz</button>
+                    </div>
+                    
+                    <div id="quizQuestions" class="hidden">
+                        <!-- Questions will be loaded here -->
+                    </div>
+                    
+                    <div id="quizResults" class="hidden">
+                        <h3 class="text-2xl font-bold mb-4">Quiz Results</h3>
+                        <div class="mb-6">
+                            <div class="flex items-center mb-2">
+                                <div class="w-full bg-gray-200 rounded-full h-4">
+                                    <div id="quizScoreBar" class="bg-blue-600 h-4 rounded-full" style="width: 0%"></div>
+                                </div>
+                                <span id="quizScoreText" class="ml-4 font-bold">0/5</span>
+                            </div>
+                        </div>
+                        <p id="quizFeedback" class="text-gray-600 mb-6"></p>
+                        <div class="flex space-x-4">
+                            <button onclick="restartQuiz()" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-700 transition">Try Again</button>
+                            <button onclick="showAnswers()" class="border-2 border-blue-600 text-blue-600 font-bold py-2 px-6 rounded-lg hover:bg-blue-50 transition">See Answers</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-12 gradient-bg text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Stay Cyber Safe</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Subscribe to our monthly newsletter for the latest cybersecurity tips and threat alerts</p>
+            <div class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg text-gray-800">
+                <button class="bg-white text-blue-800 font-bold py-3 px-6 rounded-lg hover:bg-blue-100 transition">Subscribe</button>
+            </div>
+            <p class="text-sm mt-3 text-blue-200">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        CyberSafe India
+                    </h3>
+                    <p class="text-gray-400">Empowering Indians with cybersecurity knowledge to navigate the digital world safely.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#threats" class="text-gray-400 hover:text-white transition">Cyber Threats</a></li>
+                        <li><a href="#protection" class="text-gray-400 hover:text-white transition">Protection Guide</a></li>
+                        <li><a href="#resources" class="text-gray-400 hover:text-white transition">Resources</a></li>
+                        <li><a href="#quiz" class="text-gray-400 hover:text-white transition">Knowledge Quiz</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Important</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Disclaimer</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>123 Cyber Park, Bangalore, India 560001</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2"></i>
+                            <span>info@cybersafeindia.org</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 CyberSafe India. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Password strength meter
+        const passwordInput = document.getElementById('passwordInput');
+        if (passwordInput) {
+            passwordInput.addEventListener('input', function() {
+                const password = this.value;
+                const meter = document.getElementById('passwordMeter');
+                const strengthText = document.getElementById('passwordStrength');
+                const feedback = document.getElementById('passwordFeedback');
+                
+                // Reset
+                let strength = 0;
+                let feedbackMessage = '';
+                
+                // Length check
+                if (password.length === 0) {
+                    strength = 0;
+                    feedbackMessage = '';
+                } else if (password.length < 8) {
+                    strength = 20;
+                    feedbackMessage = 'Too short (minimum 8 characters)';
+                } else if (password.length >= 12) {
+                    strength += 25;
+                } else {
+                    strength += 15;
+                }
+                
+                // Character variety checks
+                if (/[A-Z]/.test(password)) strength += 15; // Uppercase
+                if (/[a-z]/.test(password)) strength += 15; // Lowercase
+                if (/\d/.test(password)) strength += 15; // Numbers
+                if (/[^A-Za-z0-9]/.test(password)) strength += 15; // Special chars
+                
+                // Common password check
+                const commonPasswords = ['password', '123456', 'qwerty', 'letmein', 'welcome'];
+                if (commonPasswords.includes(password.toLowerCase())) {
+                    strength = 10;
+                    feedbackMessage = 'This is a very common password - avoid it!';
+                }
+                
+                // Dictionary word check (simplified)
+                if (password.length > 3 && !/\d/.test(password) && !/[^A-Za-z]/.test(password)) {
+                    strength = Math.min(strength, 30);
+                    if (!feedbackMessage) feedbackMessage = 'Avoid simple dictionary words';
+                }
+                
+                // Update UI
+                meter.style.width = strength + '%';
+                
+                if (strength < 30) {
+                    meter.style.backgroundColor = '#ef4444'; // red
+                    strengthText.textContent = 'Weak';
+                    strengthText.className = 'text-sm font-medium text-red-600';
+                } else if (strength < 70) {
+                    meter.style.backgroundColor = '#f59e0b'; // amber
+                    strengthText.textContent = 'Moderate';
+                    strengthText.className = 'text-sm font-medium text-amber-600';
+                } else {
+                    meter.style.backgroundColor = '#10b981'; // emerald
+                    strengthText.textContent = 'Strong';
+                    strengthText.className = 'text-sm font-medium text-emerald-600';
+                }
+                
+                if (feedbackMessage) {
+                    feedback.textContent = feedbackMessage;
+                } else if (strength >= 70) {
+                    feedback.textContent = 'Great job! This is a strong password.';
+                } else {
+                    feedback.textContent = 'Try adding more character types (uppercase, numbers, symbols)';
+                }
+            });
+        }
+
+        // Tab functionality
+        function openTab(evt, tabName) {
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            const tabButtons = document.getElementsByClassName('tab-button');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].className = tabButtons[i].className.replace(' text-blue-600 border-b-2 border-blue-600', ' text-gray-500 hover:text-gray-700');
+            }
+            
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.className += ' text-blue-600 border-b-2 border-blue-600';
+        }
+
+        // Example modals
+        function showExample(type) {
+            const modal = document.getElementById('exampleModal');
+            const title = document.getElementById('exampleTitle');
+            const content = document.getElementById('exampleContent');
+            
+            modal.classList.remove('hidden');
+            
+            switch(type) {
+                case 'phishing':
+                    title.textContent = 'Phishing Example';
+                    content.innerHTML = `
+                        <div class="phishing-example bg-white border border-gray-200 p-4 mb-4">
+                            <div class="flex items-center mb-3">
+                                <img src="https://logo.clearbit.com/paypal.com" alt="PayPal" class="h-8 mr-2">
+                                <div>
+                                    <p class="font-bold">service@paypal.com</p>
+                                    <p class="text-sm text-gray-500">to me</p>
+                                </div>
+                            </div>
+                            <div class="border-t border-gray-200 pt-3">
+                                <p class="font-bold mb-2">Your account has been limited</p>
+                                <p class="text-gray-700 mb-4">Dear Customer, We've detected unusual activity on your PayPal account. To avoid temporary limitation, please verify your account by clicking the link below:</p>
+                                <a href="#" class="inline-block bg-blue-500 text-white py-2 px-4 rounded mb-4">Verify My Account</a>
+                                <p class="text-gray-500 text-sm">PayPal will never ask you to provide personal information via email.</p>
+                            </div>
+                            <div class="phishing-overlay">
+                                <i class="fas fa-exclamation-triangle text-white text-4xl mb-2"></i>
+                                <p class="text-white font-bold text-xl mb-1">PHISHING ALERT!</p>
+                                <p class="text-white text-center px-4">This is a fake email designed to steal your login credentials. Notice the urgent tone and request for action.</p>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold mb-2">How to Spot Phishing:</h4>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Check the sender's email address carefully</li>
+                                <li>Look for spelling/grammar mistakes</li>
+                                <li>Hover over links to see the real URL</li>
+                                <li>Be wary of urgent requests for action</li>
+                                <li>When in doubt, contact the company directly</li>
+                            </ul>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'scam':
+                    title.textContent = 'Online Scam Example';
+                    content.innerHTML = `
+                        <div class="bg-white border border-gray-200 p-4 mb-4 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-yellow-100 p-2 rounded-full mr-3">
+                                    <i class="fas fa-rupee-sign text-yellow-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold">Job Offer Scam</p>
+                                </div>
+                            </div>
+                            <div class="pl-11">
+                                <p class="text-gray-700 mb-4">"Dear Applicant, Congratulations! You've been selected for a Work From Home job with a salary of ₹35,000/month. To complete your registration, please pay a one-time processing fee of ₹1,999. Click below to proceed..."</p>
+                                <div class="bg-red-50 border-l-4 border-red-400 p-3 mb-4">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-exclamation-circle text-red-500 mt-1"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-sm text-red-700">Legitimate employers never ask for payment during the hiring process. This is a common scam to steal money.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold mb-2">Common Indian Online Scams:</h4>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Fake job offers with high salaries</li>
+                                <li>"KYC update" scams targeting bank customers</li>
+                                <li>Fake lottery/cash prize notifications</li>
+                                <li>Romance scams on dating sites</li>
+                                <li>Fake customer support calls about "suspicious activity"</li>
+                            </ul>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'malware':
+                    title.textContent = 'Malware Example';
+                    content.innerHTML = `
+                        <div class="bg-white border border-gray-200 p-4 mb-4 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-purple-100 p-2 rounded-full mr-3">
+                                    <i class="fas fa-exclamation-triangle text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold">Fake Software Update Alert</p>
+                                </div>
+                            </div>
+                            <div class="pl-11">
+                                <div class="bg-gray-800 text-white p-3 rounded mb-3">
+                                    <p class="font-mono text-sm">WARNING: Your Adobe Flash Player is out of date!</p>
+                                    <p class="font-mono text-sm">Click UPDATE to avoid security risks.</p>
+                                    <button class="bg-red-500 text-white px-3 py-1 rounded mt-2 text-sm">UPDATE NOW</button>
+                                </div>
+                                <p class="text-gray-700 mb-2">This popup appears while browsing a website, urging you to download an "update".</p>
+                                <div class="bg-red-50 border-l-4 border-red-400 p-3">
+                                    <div class="flex">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-exclamation-circle text-red-500 mt-1"></i>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-sm text-red-700">This is fake! It will install malware instead of updating anything. Never download software from popups.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold mb-2">Malware Protection Tips:</h4>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Keep your software updated through official channels only</li>
+                                <li>Use reputable antivirus software</li>
+                                <li>Don't download pirated software/cracks</li>
+                                <li>Be cautious with email attachments</li>
+                                <li>Regularly backup your important files</li>
+                            </ul>
+                        </div>
+                    `;
+                    break;
+                    
+                default:
+                    title.textContent = 'Example';
+                    content.innerHTML = '<p>Example content would go here.</p>';
+            }
+        }
+
+        function hideExample() {
+            document.getElementById('exampleModal').classList.add('hidden');
+        }
+
+        // Quiz functionality
+        const quizQuestions = [
+            {
+                question: "You receive an email from your bank asking you to click a link and verify your account details. What should you do?",
+                options: [
+                    "Click the link and log in to verify your details",
+                    "Forward the email to your bank's official customer support to check if it's legitimate",
+                    "Reply to the email with your account details",
+                    "Call the phone number provided in the email to verify"
+                ],
+                correct: 1,
+                explanation: "Legitimate banks never ask for sensitive information via email. Forward suspicious emails to your bank's official customer support for verification."
+            },
+            {
+                question: "Which of these is the strongest password?",
+                options: [
+                    "password123",
+                    "Delhi@2023!",
+                    "123456789",
+                    "iloveindia"
+                ],
+                correct: 1,
+                explanation: "'Delhi@2023!' is the strongest as it combines uppercase, lowercase, numbers, special characters, and is not a common phrase."
+            },
+            {
+                question: "You're using public Wi-Fi at a coffee shop. What's the safest way to access your bank account?",
+                options: [
+                    "Use the coffee shop's Wi-Fi directly",
+                    "Use a VPN connection before accessing sensitive sites",
+                    "Ask the barista for the 'more secure' network",
+                    "Turn off Wi-Fi and use mobile data instead"
+                ],
+                options: [
+                    "Use the coffee shop's Wi-Fi directly",
+                    "Use a VPN connection before accessing sensitive sites",
+                    "Ask the barista for the 'more secure' network",
+                    "Turn off Wi-Fi and use mobile data instead"
+                ],
+                correct: 3,
+                explanation: "Mobile data is generally more secure than public Wi-Fi. If you must use public Wi-Fi, a VPN provides essential encryption."
+            },
+            {
+                question: "What should you do if you receive a call from someone claiming to be from Microsoft support, saying your computer has a virus?",
+                options: [
+                    "Follow their instructions to let them remotely access your computer",
+                    "Provide your credit card details to purchase their antivirus software",
+                    "Hang up and report the call to cybercrime authorities",
+                    "Give them your computer's IP address for diagnosis"
+                ],
+                correct: 2,
+                explanation: "This is a common tech support scam. Microsoft never makes unsolicited calls about viruses. Always hang up and report such calls."
+            },
+            {
+                question: "You receive a UPI payment request from an unknown number for ₹1. What should you do?",
+                options: [
+                    "Decline the request and block the number",
+                    "Accept it since it's only ₹1",
+                    "Ask the sender who they are before deciding",
+                    "Accept it and then request ₹1 back"
+                ],
+                correct: 0,
+                explanation: "This could be a scammer testing your number. Decline and block to prevent potential fraud attempts."
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function startQuiz() {
+            document.getElementById('quizIntro').classList.add('hidden');
+            document.getElementById('quizQuestions').classList.remove('hidden');
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const quizQuestionsDiv = document.getElementById('quizQuestions');
+            const question = quizQuestions[currentQuestion];
+            
+            let html = `
+                <div class="mb-6">
+                    <p class="text-sm text-gray-500 mb-1">Question ${currentQuestion + 1} of ${quizQuestions.length}</p>
+                    <h4 class="text-xl font-bold mb-4">${question.question}</h4>
+                    <div class="space-y-3">
+            `;
+            
+            question.options.forEach((option, index) => {
+                html += `
+                    <div class="flex items-center">
+                        <input type="radio" id="option${index}" name="quizOption" value="${index}" class="mr-3">
+                        <label for="option${index}" class="cursor-pointer">${option}</label>
+                    </div>
+                `;
+            });
+            
+            html += `
+                    </div>
+                </div>
+                <button onclick="checkAnswer()" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-700 transition">Submit Answer</button>
+            `;
+            
+            quizQuestionsDiv.innerHTML = html;
+        }
+
+        function checkAnswer() {
+            const selectedOption = document.querySelector('input[name="quizOption"]:checked');
+            
+            if (!selectedOption) {
+                alert('Please select an answer!');
+                return;
+            }
+            
+            const userAnswer = parseInt(selectedOption.value);
+            const correctAnswer = quizQuestions[currentQuestion].correct;
+            
+            if (userAnswer === correctAnswer) {
+                score++;
+            }
+            
+            currentQuestion++;
+            
+            if (currentQuestion < quizQuestions.length) {
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quizQuestions').classList.add('hidden');
+            document.getElementById('quizResults').classList.remove('hidden');
+            
+            const percentage = (score / quizQuestions.length) * 100;
+            const scoreBar = document.getElementById('quizScoreBar');
+            const scoreText = document.getElementById('quizScoreText');
+            const feedback = document.getElementById('quizFeedback');
+            
+            scoreBar.style.width = percentage + '%';
+            scoreText.textContent = `${score}/${quizQuestions.length}`;
+            
+            if (percentage < 50) {
+                scoreBar.style.backgroundColor = '#ef4444'; // red
+                feedback.textContent = 'Your cybersecurity knowledge needs improvement. Review our protection guides to learn more about staying safe online.';
+            } else if (percentage < 80) {
+                scoreBar.style.backgroundColor = '#f59e0b'; // amber
+                feedback.textContent = 'Good effort! You have basic cybersecurity knowledge but there\'s room for improvement. Check out the answers to learn more.';
+            } else {
+                scoreBar.style.backgroundColor = '#10b981'; // emerald
+                feedback.textContent = 'Excellent! You have strong cybersecurity awareness. Keep up the good practices and stay vigilant online.';
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('quizResults').classList.add('hidden');
+            document.getElementById('quizQuestions').classList.remove('hidden');
+            showQuestion();
+        }
+
+        function showAnswers() {
+            document.getElementById('quizResults').classList.add('hidden');
+            const quizQuestionsDiv = document.getElementById('quizQuestions');
+            
+            let html = '<h3 class="text-2xl font-bold mb-6">Quiz Answers</h3>';
+            
+            quizQuestions.forEach((question, index) => {
+                html += `
+                    <div class="mb-8">
+                        <p class="font-bold mb-2">${index + 1}. ${question.question}</p>
+                        <p class="text-green-600 mb-2"><i class="fas fa-check-circle mr-2"></i> Correct answer: ${question.options[question.correct]}</p>
+                        <p class="text-gray-600 bg-blue-50 p-3 rounded-lg">${question.explanation}</p>
+                    </div>
+                `;
+            });
+            
+            html += `
+                <div class="flex space-x-4">
+                    <button onclick="restartQuiz()" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-700 transition">Try Again</button>
+                    <a href="#protection" class="border-2 border-blue-600 text-blue-600 font-bold py-2 px-6 rounded-lg hover:bg-blue-50 transition">Learn More</a>
+                </div>
+            `;
+            
+            quizQuestionsDiv.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
